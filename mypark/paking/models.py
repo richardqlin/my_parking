@@ -11,16 +11,18 @@ class Spots(models.Model):
 	spots=models.CharField(max_length=50)
 	lat=models.CharField(max_length=50)
 	lang=models.CharField(max_length=50)
-	radius=models.CharField(max_length=50)
-	timer=models.CharField(max_length=50)
+	#radius=models.CharField(max_length=50)
+	parkingtime=models.DateTimeField(blank=True,null=True)
 
 	def __unicode__(self):
-		return "%s %s %s " %(self.spots,self.lat, self.lang)
+		return "%s %s %s %s" %(self.spots,self.lat, self.lang,self.parkingtime)
 
 
 class Paking(models.Model):
-	paking=models.ForeignKey(Spots,on_delete=models.CASCADE)
-	parking_time=models.CharField(max_length=50)
+	paking=models.CharField(max_length=200)
+	availality=models.IntegerField(blank=True,null=True)
+	#expiretime=models.DateTimeField(db_column='expireTime', blank=True,null=True)
 
 	def __unicode__(self):
+		managed=True
 		return self.paking
