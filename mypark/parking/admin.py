@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Spots, Paking
+from .models import Car, Parking
 
-admin.site.register(Spots)
-admin.site.register(Paking)
+admin.site.register(Car)
+admin.site.register(Parking)
 
 # Register your models here.

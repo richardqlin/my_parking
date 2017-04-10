@@ -1,13 +1,13 @@
 from django.conf.urls import url
-from paking import views
+from parking import views
 
-app_name='paking'
+app_name='parking'
 urlpatterns=[
 
 	
 	
-	url(r'^spots/$',views.spots, name='spots'),
-	url(r'^spots_success/$',views.spots_success, name='spots_success'),
+	url(r'^car/$',views.car, name='car'),
+	url(r'^car_success/$',views.car_success, name='car_success'),
 
 	#url(r'^reverse/$',views.reverse, name='reserve'),
 	#url(r'^view_reserve/$',views.view_reserve, name='view_reserve'),

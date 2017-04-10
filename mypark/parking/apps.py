@@ -5,4 +5,4 @@ from django.apps import AppConfig
 
 
 class PakingConfig(AppConfig):
-    name = 'paking'
+    name = 'parking'

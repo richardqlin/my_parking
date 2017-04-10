@@ -7,22 +7,24 @@ from django import forms
 
 # Create your models here.
 
-class Spots(models.Model):
-	spots=models.CharField(max_length=50)
+class Car(models.Model):
+	car_id=models.CharField(max_length=50)
 	lat=models.CharField(max_length=50)
 	lang=models.CharField(max_length=50)
 	#radius=models.CharField(max_length=50)
 	parkingtime=models.DateTimeField(blank=True,null=True)
 
 	def __unicode__(self):
-		return "%s %s %s %s" %(self.spots,self.lat, self.lang,self.parkingtime)
+		return "%s %s %s %s" %(self.car_id,self.lat, self.lang,self.parkingtime)
 
 
-class Paking(models.Model):
-	paking=models.CharField(max_length=200)
+class Parking(models.Model):
+	car_id=models.CharField(max_length=50,blank=True,null=True)
+	parking_slot=models.CharField(max_length=200)
 	availality=models.IntegerField(blank=True,null=True)
+
 	#expiretime=models.DateTimeField(db_column='expireTime', blank=True,null=True)
 
 	def __unicode__(self):
-		managed=True
-		return self.paking
+	
+		return "%s %s %s" %(self.car_id, self.parking_slot,self.availality)
