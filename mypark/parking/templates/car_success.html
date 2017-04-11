@@ -1,13 +1,28 @@
+
+<p> Cars </p>
+
+
 {% for s in car %}
-<li>
-{{s}}
-</li>
+
+<li>car_id: {{s.car_id}}
+
+ car latidute: {{s.lat}}
+car longtidute: {{s.long}}
+ parking time:{{ parkingtime}}</li>
 {% endfor %}
 
 
 
+<p> Parking slots</p>
+
+<p> 1- available 0-non available </p>
+<p>parkingtime	Parking slots 	availibility</p>
+
+
 {% for p in parking %}
 <li>
-{{p}}
+car_id: {{p.car_id}}
+parking_slot: {{p.parking_slot}}
+availibility: {{p.availibility}}
 </li>
 {% endfor %}

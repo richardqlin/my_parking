@@ -30,10 +30,29 @@ def car(request):
 def car_success(request):
 	car=Car.objects.all()
 	for s in car:
-		print s.car_id
-	parking=Parking.objects.filter(availality=1)
+		a= s.car_id
 
+		a=str(a)
+		break
+	print a
+ 
+	parking=Parking.objects.all()#filter(availibility=1)
 	print parking
+	for p in parking: 
+	
+		print p
+		if p.availibility==1:
+			p.availibility=0
+			p.car_id=a
+			p.save()
+		#p.objects.first()
+		#p.objects.update(availibility=0)
+		#s.objects.update(car_id=a)
+			break
+		
+
+
+	
 	return render_to_response('car_success.html',{'car':car,'parking':parking})
 
 
