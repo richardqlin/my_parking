@@ -37,6 +37,8 @@ def car_success(request):
 	for s in car:
 		a= s.car_id
 		a=str(a)
+		car_start=s.start
+		car_end=s.end
 		break
 
  
@@ -48,6 +50,8 @@ def car_success(request):
 		if p.availibility==1:
 			p.availibility=0
 			p.car_id=a
+			p.start=car_start
+			p.end=car_end
 			p.save()
 		
 			break
@@ -57,11 +61,11 @@ def car_success(request):
 
 def reserve(request):
 	
-	if request.method=='UPDATE':
+	if request.method=='POST':
 		p_form=ParkingForm(request.POST)
 		if p_form.is_valid():
 			p_form.save()
-			#return HttpResponseRedirect('/parking/reserve_success')
+			return HttpResponseRedirect('/parking/reserve_view')
 		else:
 			return render(request,'reserve.html',{'p_form':p_form})
 	p_form =ParkingForm()

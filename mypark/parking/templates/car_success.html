@@ -8,7 +8,8 @@
 
  car latidute: {{s.lat}}
 car longtidute: {{s.long}}
- parking time:{{ parkingtime}}</li>
+ start time:{{ s.start}}
+ end time: {{ s.end}}</li>
 {% endfor %}
 
 
@@ -24,5 +25,9 @@ car longtidute: {{s.long}}
 car_id: {{p.car_id}}
 parking_slot: {{p.parking_slot}}
 availibility: {{p.availibility}}
+parking start: {{p.start}}
+parking end: {{p.end}}
 </li>
 {% endfor %}
+
+<li> Click <a href="/parking/">here</a> return to menu </li>
