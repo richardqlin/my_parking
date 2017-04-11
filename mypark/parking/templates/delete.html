@@ -6,11 +6,10 @@
 
 
 {% for p in parking %}
-<li>
+<ol>
 car_id: {{p.car_id}}
-parking_slot: {{p.parking_slot}}
 availibility: {{p.availibility}}
-</li>
+</ol>
 {% endfor %}
 
 <form action="" method="GET">

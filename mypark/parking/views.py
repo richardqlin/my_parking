@@ -76,9 +76,11 @@ def delete(request):
 	parking=Parking.objects.all()
 	query=request.GET.get('q')
 	if query:
-		parking=parking.get(pk=query)
-		print parking
-		parking.delete()
+		print query
+		parking_exist=parking.filter(pk=query)
+		if parking_exist.count()>0:
+			parking=parking.get(pk=query)
+			parking.delete()
 	
 
 	return render(request,'delete.html',{'parking':parking})
