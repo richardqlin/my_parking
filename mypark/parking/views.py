@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, render_to_response
 
-from .forms import CarForm
-
+from .forms import CarForm, ParkingForm
+from datetime import datetime
 from django import forms
 
 from .models import Car, Parking
@@ -14,6 +14,11 @@ from django.template import loader
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 
 # Create your views here.
+
+
+def menu(request):
+	time=datetime.now()
+	return render(request,'menu.html',{'time':time})
 
 
 def car(request):
@@ -31,12 +36,11 @@ def car_success(request):
 	car=Car.objects.all()
 	for s in car:
 		a= s.car_id
-
 		a=str(a)
 		break
-	print a
+
  
-	parking=Parking.objects.all()#filter(availibility=1)
+	parking=Parking.objects.all()
 	print parking
 	for p in parking: 
 	
@@ -45,15 +49,36 @@ def car_success(request):
 			p.availibility=0
 			p.car_id=a
 			p.save()
-		#p.objects.first()
-		#p.objects.update(availibility=0)
-		#s.objects.update(car_id=a)
-			break
 		
+			break
 
-
-	
 	return render_to_response('car_success.html',{'car':car,'parking':parking})
 
 
+def reserve(request):
+	
+	if request.method=='UPDATE':
+		p_form=ParkingForm(request.POST)
+		if p_form.is_valid():
+			p_form.save()
+			#return HttpResponseRedirect('/parking/reserve_success')
+		else:
+			return render(request,'reserve.html',{'p_form':p_form})
+	p_form =ParkingForm()
+	return render(request,'reserve.html',{'p_form':p_form})
 
+
+def reserve_view(request):
+	park=Parking.objects.all()
+	return render(request,'reserve_view.html',{'park':park})
+
+def delete(request):
+	parking=Parking.objects.all()
+	query=request.GET.get('q')
+	if query:
+		parking=parking.get(pk=query)
+		print parking
+		parking.delete()
+	
+
+	return render(request,'delete.html',{'parking':parking})

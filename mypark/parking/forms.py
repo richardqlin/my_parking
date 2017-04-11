@@ -9,3 +9,8 @@ class CarForm(forms.ModelForm):
 		fields='__all__'
 
 
+class ParkingForm(forms.ModelForm):
+	class Meta:
+		model=Parking
+
+		fields='__all__'

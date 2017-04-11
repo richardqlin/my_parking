@@ -1,0 +1,13 @@
+
+<p> update parking reserve</p>
+
+<form action="/parking/reserve/" method="post">
+
+	{% csrf_token %}
+
+	{{p_form}}
+
+<input type="submit" Value="Submit">
+</form>
+
+<li> Click <a href="/parking/reserve_view/">here</a> to view parking reserve </li>

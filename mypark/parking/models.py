@@ -13,6 +13,7 @@ class Car(models.Model):
 	lang=models.CharField(max_length=50)
 	#radius=models.CharField(max_length=50)
 	parkingtime=models.DateTimeField(blank=True,null=True)
+	duration=models
 
 	def __unicode__(self):
 		return "%s %s %s %s" %(self.car_id,self.lat, self.lang,self.parkingtime)
